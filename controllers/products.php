@@ -36,14 +36,25 @@ class Products extends Controller {
       $daten['price'] = filter_var($_POST['price'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION | FILTER_FLAG_ALLOW_THOUSAND);
    
       if ($id) {
-         $data = $this->_model->editProduct($daten);
-         Message::set('Artikel aktualisiert');
+         $data = $this->_model->editProduct(array($daten, $id));
+         Message::set('<strong>Artikel aktualisiert</strong>');
       }
       else {
          $data = $this->_model->addProduct($daten);
-         Message::set('Artikel hinzugefügt');
+         Message::set('<strong>Artikel hinzugefügt.</strong>');
       }
       header("Refresh:0; url='../'");
+   }
+
+   public function edit() {
+      if(isset($_GET['id'])){
+         $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+         $this->insert();
+      }
+      else {
+         Message::set('Failed to edit','danger');
+      }
+      
    }
 
 }

@@ -28,7 +28,7 @@ class Products_Model extends Model {
     */
 
     public function editProduct(array $daten) {
-        $this->_db->update('UPDATE products SET name = ?, url = ?, image = ?, price = ? WHERE id = ?');
+        $this->_db->update('products', $daten, $id);
     }
 
     /**
