@@ -47,14 +47,17 @@ class Products extends Controller {
    }
 
    public function edit($id) {
-      if(isset($id)){
-         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
-         $this->insert();
+      $data['title'] = 'Produkt';
+      $data['form_header'] = 'Produkt aktualiseren';
+      $this->_view->render('header', $data);
+      if($id){
+         $pid = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+         $this->_view->render('products/form', $data);
       }
       else {
          Message::set('Failed to edit','danger');
-      }
-      
+      }  
+      $this->_view->render('footer');
    }
-
+   
 }

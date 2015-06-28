@@ -13,7 +13,7 @@
                <div class="thumbnail">
                   <a href="' . $product['url'] . '" title="' . $product['name'] . '"><img src="' . $product['image'] . '" alt="' . $product['name'] . '"></a>
                   <div class="buttons-edit">
-                     <a class="btn btn-default btn-sm" href="' . DIR . 'products/edit(' .$product['id']. ')/' . '">Edit</a>
+                     <a class="btn btn-default btn-sm" href="' . DIR . 'products/edit/' .$product['id']. '/' . '">Edit</a>
                      <a class="btn btn-default btn-sm" href="' . DIR . 'products/delete/' . $product['id'] . '">Delete</a>
                   </div>
                   <div class="caption">
