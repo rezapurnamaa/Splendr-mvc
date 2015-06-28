@@ -7,10 +7,11 @@ class Products extends Controller {
    }
 
    public function index() {
-      $data['title'] = 'Übersicht';
+      $data['title'] = 'Splendr';
       $data['products'] = $this->_model->all();
 
       $this->_view->render('header', $data);
+      $this->_view->render('home/jumbotron-header', $data);
       $this->_view->render('products/list', $data);
       $this->_view->render('footer');
    }

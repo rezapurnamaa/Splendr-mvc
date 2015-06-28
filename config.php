@@ -4,7 +4,7 @@
 date_default_timezone_set('Europe/Berlin');
 
 //site address
-define('DIR','http://localhost/Splendr/');
+define('DIR','http://localhost/Splendr-mvc/');
 define('DOCROOT', dirname(__FILE__));
 
 // Credentials for the local server

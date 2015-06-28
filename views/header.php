@@ -20,7 +20,7 @@
    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
    <!-- icon -->
-   <link rel="shortcut icon" href="img/favicon.ico">
+   <link rel="shortcut icon" href="<?= URL::ICON('favicon') ?>">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="<?= DIR ?>">Home</a>
+              <a class="navbar-brand" href="<?= DIR ?>">Splendr</a>
             </div>
 
             <div id="navbar" class="navbar-collapse collapse">
@@ -64,7 +64,7 @@
                         <a href="board.html">Board</a>
                     </li>
                     <li>
-                        <a href="produkt.html">Produkt</a>
+                        <a href="<?= DIR ?>products/add">Neues Produkt</a>
                     </li>
                     <li>
                         <a href="profile.html">Profile</a>
@@ -73,9 +73,9 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><form class="navbar-form" role="search">
+                    <li><form class="navbar-form" role="search" action="<?= DIR ?>products/search" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="q">
+                            <input type="search" class="form-control" placeholder="Search" name="q">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             </div>

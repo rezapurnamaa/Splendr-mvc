@@ -37,5 +37,12 @@ class URL {
       }
       return DIR . $path;
    }
+
+   public static function ICON($filename = false, $path = 'static/img/') {
+      if ($filename) {
+         $path .= "$filename.ico";
+      }
+      return DIR . $path;
+   }
    
 }
