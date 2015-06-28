@@ -18,8 +18,8 @@ class Products_Model extends Model {
     * Fügt ein Produkt hinzu.
     * @param array $daten Liste aus name, url, image und price
     */
-    public function addProduct(array $daten) {
-         $this->_db->insert('INSERT INTO products (id, timestamp, name, url, image, price) VALUES (NULL, CURRENT_TIMESTAMP, ?, ?, ?, ?)');
+    public function addProduct($daten) {
+         $this->_db->insert('products',$daten);
     }
 
     /**
