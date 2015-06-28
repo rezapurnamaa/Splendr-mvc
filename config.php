@@ -12,20 +12,20 @@ define('DB_TYPE','mysql');
 define('DB_HOST','db.f4.htw-berlin.de');
 define('DB_NAME','_s0533453__products');
 define('DB_USER','s0533453');
-define('DB_PASS','password');
+define('DB_PASS','');
 
 // // Credentials for the local server
 // define('DB_TYPE','mysql');
 // define('DB_HOST','localhost');
 // define('DB_NAME','products');
 // define('DB_USER','root');
-// define('DB_PASS','root');
+// define('DB_PASS','');
 
 // Credentials for the HTW server
 // define('DB_HOST','db.f4.htw-berlin.de');
 // define('DB_NAME','_beierm__products');
 // define('DB_USER','beierm');
-// define('DB_PASS','bummelletzter');
+// define('DB_PASS','');
 
 //set prefix for sessions
 define('SESSION_PREFIX','splendr_');
