@@ -46,9 +46,9 @@ class Products extends Controller {
       header("Refresh:0; url='../'");
    }
 
-   public function edit() {
-      if(isset($_GET['id'])){
-         $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+   public function edit($id) {
+      if(isset($id)){
+         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
          $this->insert();
       }
       else {
