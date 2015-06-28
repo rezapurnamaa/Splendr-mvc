@@ -25,4 +25,24 @@ class Products extends Controller {
       $this->_view->render('footer');
    }
 
+   public function insert() {
+
+      if(isset($_POST['id'])){
+         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+      }
+      $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+      $url = filter_var($_POST['url'], FILTER_SANITIZE_URL);
+      $image = filter_var($_POST['image'], FILTER_SANITIZE_URL);
+      $price = filter_var($_POST['price'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION | FILTER_FLAG_ALLOW_THOUSAND);
+
+      if ($id) {
+         $data = $this->_model->editProduct(array($name, $url, $image, $price, $id));
+         $message = '<strong>Artikel aktualisiert.</strong>';
+      }
+      else {
+         $data = $this->_model->addProduct(array($name, $url, $image, $price));
+         $message = '<strong>Artikel hinzugefügt.</strong>';
+      }
+   }
+
 }
