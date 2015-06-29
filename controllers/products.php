@@ -36,7 +36,7 @@ class Products extends Controller {
       $daten['price'] = filter_var($_POST['price'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION | FILTER_FLAG_ALLOW_THOUSAND);
    
       if ($id) {
-         $data = $this->_model->editProduct(array($daten, $id));
+         $data = $this->_model->editProduct($daten, $id);
          Message::set('<strong>Artikel aktualisiert</strong>');
       }
       else {
@@ -52,8 +52,9 @@ class Products extends Controller {
       $this->_view->render('header', $data);
       if($id){
          $pid = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+         //check if product with id = $pid already exists
+         $data['product'] = $this->_model->select_where($pid);
          $this->_view->render('products/form', $data);
-         // $data = $this->
       }
       else {
          Message::set('Failed to edit','danger');

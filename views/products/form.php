@@ -9,9 +9,14 @@
       <?php echo Message::show(); ?>
 
       <?php
-         $product = $data['product'];
+         //$product = $data['product'];
          // echo "<pre>";
-         // echo $data;
+          foreach ($data['product'] as &$daten) 
+            $product['id'] = $daten['id'];
+            $product['name'] = $daten['name'];
+            $product['url'] = $daten['url'];
+            $product['image'] = $daten['image'];
+            $product['price'] = $daten['price'];
          // echo "<pre>";
          if (isset($product['id'])) :
       ?>
@@ -36,25 +41,25 @@
          <div class="form-group">
              <label class="control-label col-sm-2" for="name">Name</label>
              <div class="col-sm-8">
-               <input type="text" class="form-control" id="name" placeholder="Produktname" value="<?= $product['name'] ?>">
+               <input type="text" class="form-control" name = "name" id="name" placeholder="Produktname" value="<?= $product['name'] ?>">
              </div>
          </div>
          <div class="form-group">
              <label class="control-label col-sm-2" for="price">Preis</label>
              <div class="col-sm-8"> 
-               <input type="number" class="form-control" id="price" placeholder="Preis" value="<?= $product['price'] ?>">
+               <input type="number" class="form-control" name = "price" id="price" placeholder="Preis" value="<?= $product['price'] ?>">
              </div>
          </div>
          <div class="form-group">
              <label class="control-label col-sm-2" for="image-url">Bild</label>
              <div class="col-sm-8"> 
-               <input type="url" class="form-control" id="img-url" placeholder="Bild URL" value="<?= $product['image'] ?>">
+               <input type="url" class="form-control" name = "image" id="img" placeholder="Bild URL" value="<?= $product['image'] ?>">
              </div>
          </div>
          <div class="form-group">
              <label class="control-label col-sm-2" for="product-url">Link</label>
              <div class="col-sm-8"> 
-               <input type="url" class="form-control" id="prod-url" placeholder="Produkt URL" value="<?= $product['url'] ?>">
+               <input type="url" class="form-control" name = "url" id="url" placeholder="Produkt URL" value="<?= $product['url'] ?>">
              </div>
          </div>
          <div class="form-group"> 
@@ -97,13 +102,13 @@
          <div class="form-group">
              <label class="control-label col-sm-2" for="image-url">Bild</label>
              <div class="col-sm-8"> 
-               <input type="url" class="form-control" id="img-url" placeholder="Bild URL" name="image">
+               <input type="url" class="form-control" id="image" placeholder="Bild URL" name="image">
              </div>
          </div>
          <div class="form-group">
              <label class="control-label col-sm-2" for="product-url">Link</label>
              <div class="col-sm-8"> 
-               <input type="url" class="form-control" id="prod-url" placeholder="Produkt URL" name="url">
+               <input type="url" class="form-control" id="url" placeholder="Produkt URL" name="url">
              </div>
          </div>
          <div class="form-group"> 

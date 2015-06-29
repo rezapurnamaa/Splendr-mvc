@@ -27,7 +27,7 @@ class Products_Model extends Model {
     * @param array $daten Liste aus name, url, image und price
     */
 
-    public function editProduct(array $daten) {
+    public function editProduct($daten,$id) {
         $this->_db->update('products', $daten, $id);
     }
 
@@ -40,5 +40,8 @@ class Products_Model extends Model {
         return $statement->execute(array($id));
     }
 
+    public function select_where($id){
+        return $this->_db->select("SELECT * FROM products WHERE id = $id");
+    }
 
 }
