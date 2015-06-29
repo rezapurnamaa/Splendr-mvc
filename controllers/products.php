@@ -53,6 +53,7 @@ class Products extends Controller {
       if($id){
          $pid = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
          $this->_view->render('products/form', $data);
+         // $data = $this->
       }
       else {
          Message::set('Failed to edit','danger');
