@@ -25,25 +25,7 @@
 <body>
 
    <div class="container">
-      <!-- <nav class="navbar navbar-default" role="navigation">
-         <div class="navbar-header">
-            <a class="navbar-brand" href="<?= DIR ?>">Splendr</a>
-         </div>
-         <form class="navbar-form navbar-right form-search" role="search" action="<?= DIR ?>products/search" method="GET">
-            <div class="form-group">
-               <div class="input-group">
-                  <input class="form-control" type="search" name="q" placeholder="Suchbegriff">
-                  <span class="input-group-btn">
-                     <button type="submit" class="btn btn-default">Suchen</button>
-                  </span>
-               </div> -->
-               <!-- /input-group -->
-            <!-- </div>
-         </form>
-         <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?= DIR ?>products/add">neues <strong>Produkt</strong></a></li>
-         </ul>
-      </nav> -->
+      
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
 
@@ -61,18 +43,18 @@
                 
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="board.html">Board</a>
+                        <a href="<?= DIR ?>products/board">Board</a>
                     </li>
                     <li>
                         <a href="<?= DIR ?>products/add">Neues Produkt</a>
                     </li>
                     <li>
-                        <a href="profile.html">Profile</a>
+                        <a href="<?= DIR ?>users/profile">Profile</a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="<?= DIR ?>users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li><form class="navbar-form" role="search" action="<?= DIR ?>products/search" method="GET">
                         <div class="input-group">
                             <input type="search" class="form-control" placeholder="Search" name="q">

@@ -19,7 +19,7 @@ class Products_Model extends Model {
     * @param array $daten Liste aus name, url, image und price
     */
     public function addProduct($daten) {
-         $this->_db->insert('products',$daten);
+      return $this->_db->insert('products',$daten);
     }
 
     /**
@@ -28,20 +28,26 @@ class Products_Model extends Model {
     */
 
     public function editProduct($daten,$id) {
-        $this->_db->update('products', $daten, 'id =' $id);
+        return $this->_db->update('products', $daten, "id = $id");
     }
 
     /**
     * Löscht ein Produkt.
     * @param int $id ID
     */
-    public function delete($id) {
-        $statement = $this->connection->prepare('DELETE FROM products WHERE id = ?');
-        return $statement->execute(array($id));
+    public function deleteProduct($id) {
+     return $this->_db->delete('products',"id = $id");
     }
 
-    public function select_where($id){
-        return $this->_db->select("SELECT * FROM products WHERE id = $id");
+    public function select_where($id) {
+      return $this->_db->select("SELECT * FROM products WHERE id = $id");
+
     }
+
+    public function searchProduct($term){
+      return $this->_db->select("SELECT * FROM products WHERE name LIKE :term",array(':term' => '%'.$term.'%'));
+
+    }
+
 
 }

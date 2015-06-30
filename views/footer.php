@@ -26,5 +26,6 @@
 <script src="<?= URL::SCRIPTS('bootstrap.min') ?>"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="<?= URL::SCRIPTS('ie10-viewport-bug-workaround') ?>"></script>
+<script src="<?= URL::SCRIPTS('custom') ?>"></script>
 </body>
 </html>
