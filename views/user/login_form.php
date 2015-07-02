@@ -33,7 +33,7 @@
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
-                              <a id="btn-login" type="submit" class="btn btn-success">Einloggen</a>
+                              <button id="btn-login" type="submit" class="btn btn-success">Einloggen</button>
                               <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Login mit Facebook</a> -->
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="panel-body" >
-                    <form id="signupform" class="form-horizontal" data-toggle="Validator" role="form">
+                    <form id="signupform" class="form-horizontal" data-toggle="Validator" role="form" action="<?= DIR ?>users/signUp" method="POST">
                         
                         <div id="signupalert" style="display:none" class="alert alert-danger">
                             <p>Error:</p>
@@ -72,10 +72,17 @@
                         <div class="form-group">
                             <label class="control-label col-md-3" for="email">Emailadresse</label>
                             <div class="col-md-9">
-                              <input type="email" class="form-control" id="email" placeholder="Enter email" data-error="That email address is invalid" required>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" data-error="That email address is invalid" required>
                             </div>
                         </div>
-                            
+                        
+                        <div class="form-group">
+                            <label for="username" class="col-md-3 control-label">Benutzername</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="username" placeholder="User Name">
+                            </div>
+                        </div>    
+
                         <div class="form-group">
                             <label for="firstname" class="col-md-3 control-label">Vorame</label>
                             <div class="col-md-9">

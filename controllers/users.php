@@ -28,11 +28,66 @@ Class Users extends Controller{
 
    public function getLogin() {
 
-		$daten['username'] = filter_var($_POST['login-name'], FILTER_SANITIZE_STRING);
-		$daten['login-password'] = filter_var($_POST['login-password'], FILTER_SANITIZE_STRING);
+      $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
+      if(filter_var($_POST['username'], FILTER_VALIDATE_EMAIL)) {
+         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+         $data['users'] = $this->_model->getEmail($email);
+         $user_db = $data['users'];
+      }
+      else {
+         $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+         $data['users'] = $this->_model->getUser($username);
+         $user_db = $data['users'];
+      }
 
-   
+      if(isset($data['users'])) {
+          foreach ($data['users'] as &$daten) 
+            $user['id'] = $daten['id'];
+            $user['username'] = $daten['username'];
+            $user['firstname'] = $daten['firstname'];
+            $user['lastname'] = $daten['lastname'];
+            $user['email'] = $daten['email'];
+            $user['password'] = $daten['password'];
+            $user['city'] = $daten['city'];
+            $user['country'] = $daten['country'];
+      }
+		else {
+         echo "cannot connect to DB.";
+      }
+
+      if($user['username'] == $username xor $user['email'] == $email) {
+         if($this->_model->validatePassword($password, $user['password'])) {
+            echo "logged in.";
+         }
+         else {
+            echo "wrong password";
+         }
+      }
+      else {
+         echo "wrong username or email.";
+      }
+   }
+
+   public function signUp() {
+      $daten['username'] = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+      $daten['password'] = filter_var($_POST['passwd'], FILTER_SANITIZE_STRING);
+      $daten['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+      $daten['firstname'] = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+      $daten['lastname'] = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+      // $data = $this->
+            
+      $data = $this->_model->addAccount($daten);
+      $data['products'] = $this->_model->all();
+
+      $this->_view->render('header', $data);
+      $this->_view->render('home/jumbotron-header', $data);
+      $this->_view->render('form_header', $data);
+      $this->_view->render('products/list', $data);
+      $this->_view->render('footer');
+
+      Message::set('<strong>Signing Up.</strong>');
+
 
    }
 

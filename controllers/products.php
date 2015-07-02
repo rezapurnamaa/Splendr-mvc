@@ -74,8 +74,8 @@ class Products extends Controller {
       $this->_view->render('header', $data);
       if($id){
          $pid = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
-         //check if product with id = $pid already exists
-         $data['product'] = $this->_model->select_where($pid);
+         //check if products with id = $pid already exists
+         $data['products'] = $this->_model->select_where($pid);
          $this->_view->render('products/form', $data);
       }
       else {
@@ -87,12 +87,11 @@ class Products extends Controller {
    public function delete($id) {
       if($id){
          $pid = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
-         //check if product with id = $pid already exists
-         $data['product'] = $this->_model->deleteProduct($pid);
+         $data['products'] = $this->_model->deleteProduct($pid);
           Message::set('<strong>Artikel gelöscht.</strong>','warning');
       }
       else {
-         Message::set('Failed to edit','danger');
+         Message::set('Failed to delete','danger');
       }
       $this->index();
    }
@@ -101,6 +100,7 @@ class Products extends Controller {
       $data['title'] = 'Search';
       $data['form_header'] = 'Gesuchte Produkte';
       $this->_view->render('header', $data);
+      $this->_view->render('form_header', $data);
 
       if($_GET['q']=="") {
          Message::set('Geben Sie bitte etwas ein.','warning');
@@ -109,24 +109,9 @@ class Products extends Controller {
       elseif (isset($_GET['q'])) {
          $find = filter_var($_GET['q'], FILTER_SANITIZE_STRING);
 
-         // echo "<pre>";
-         // echo $find;
-         // echo "</pre>";
+         $data['products'] = $this->_model->searchProduct($find);
 
-         $data['product'] = $this->_model->searchProduct($find);
-         
-         foreach ($data['product'] as &$daten) 
-            $product['id'] = $daten['id'];
-            $product['name'] = $daten['name'];
-            $product['url'] = $daten['url'];
-            $product['image'] = $daten['image'];
-            $product['price'] = $daten['price'];
-         
-         echo "<pre>";
-         echo $product['name'];
-         echo "</pre>";
-
-         if($product['name']){
+         if($data['products']){
             $this->_view->render('products/list', $data);
          }
          else {

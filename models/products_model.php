@@ -45,7 +45,7 @@ class Products_Model extends Model {
     }
 
     public function searchProduct($term){
-      return $this->_db->select("SELECT * FROM products WHERE name LIKE :term",array(':term' => '%'.$term.'%'));
+      return $this->_db->select("SELECT * FROM products WHERE name LIKE '%$term%' ");
 
     }
 

@@ -11,7 +11,7 @@
       <?php
          //$product = $data['product'];
          // echo "<pre>";
-          foreach ($data['product'] as &$daten) 
+          foreach ($data['products'] as &$daten) 
             $product['id'] = $daten['id'];
             $product['name'] = $daten['name'];
             $product['url'] = $daten['url'];
