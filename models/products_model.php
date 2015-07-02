@@ -39,11 +39,19 @@ class Products_Model extends Model {
      return $this->_db->delete('products',"id = $id");
     }
 
+    /**
+    *gibt die Werte von bestimmte ID zurück
+    *@param $id
+    */
     public function select_where($id) {
       return $this->_db->select("SELECT * FROM products WHERE id = $id");
 
     }
 
+    /**
+    *Suche Produkte
+    *@param $id
+    */
     public function searchProduct($term){
       return $this->_db->select("SELECT * FROM products WHERE name LIKE '%$term%' ");
 

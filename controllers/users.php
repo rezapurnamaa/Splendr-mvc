@@ -90,26 +90,4 @@ Class Users extends Controller{
 
 
    }
-
-   public function insert() {
-
-      if(isset($_POST['id'])){
-         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
-      }
-      $daten['name'] = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-      $daten['url'] = filter_var($_POST['url'], FILTER_SANITIZE_URL);
-      $daten['image'] = filter_var($_POST['image'], FILTER_SANITIZE_URL);
-      $daten['price'] = filter_var($_POST['price'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION | FILTER_FLAG_ALLOW_THOUSAND);
-   
-      if ($id) {
-         $data = $this->_model->editProduct($daten, $id);
-         Message::set('<strong>Artikel aktualisiert.</strong>');
-      }
-      else {
-         $data = $this->_model->addProduct($daten);
-         Message::set('<strong>Artikel hinzugefügt.</strong>');
-      }
-      header("Refresh:0; url='../'");
-   }
-
 }

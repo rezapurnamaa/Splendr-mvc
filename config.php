@@ -19,7 +19,7 @@ define('DB_PASS','password');
 // define('DB_HOST','localhost');
 // define('DB_NAME','products');
 // define('DB_USER','root');
-// define('DB_PASS','root');
+// define('DB_PASS','');
 
 // Credentials for the HTW server
 // define('DB_HOST','db.f4.htw-berlin.de');

@@ -9,15 +9,13 @@
       <?php echo Message::show(); ?>
 
       <?php
-         //$product = $data['product'];
-         // echo "<pre>";
           foreach ($data['products'] as &$daten) 
             $product['id'] = $daten['id'];
             $product['name'] = $daten['name'];
             $product['url'] = $daten['url'];
             $product['image'] = $daten['image'];
             $product['price'] = $daten['price'];
-         // echo "<pre>";
+
          if (isset($product['id'])) :
       ?>
 
