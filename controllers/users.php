@@ -1,9 +1,12 @@
 <?php
 
 Class Users extends Controller{
+
+   // private $product;
 	
 	public function __construct() {
       parent::__construct();
+      // $this->$product = new Products();
    }
 
    public function profile() {
@@ -58,7 +61,11 @@ Class Users extends Controller{
 
       if($user['username'] == $username xor $user['email'] == $email) {
          if($this->_model->validatePassword($password, $user['password'])) {
-            echo "logged in.";
+            Session::set($user['username'],$user['id']);
+            Message::set('Willkommen <strong>'.$user['firstname'].'</strong>! Schön dich zu sehen.');
+            
+            $this->loginAccess();
+
          }
          else {
             echo "wrong password";
@@ -67,6 +74,27 @@ Class Users extends Controller{
       else {
          echo "wrong username or email.";
       }
+   }
+
+   private function loginAccess() {
+      
+      if (Session::get($user['username'],$user['id'])) {
+         $this->index();
+      }
+      else {
+         Message::set('<strong>Du bist ausgeloggt.</strong>');
+         $this->index();
+      }
+      
+   }
+
+   private function index() {
+      $data['products'] = $this->_model->all();
+      $this->_view->render('header', $data);
+      $this->_view->render('home/jumbotron-header', $data);
+      $this->_view->render('form_header', $data);
+      $this->_view->render('products/list', $data);
+      $this->_view->render('footer');
    }
 
    public function signUp() {

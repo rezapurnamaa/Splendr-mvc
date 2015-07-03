@@ -4,7 +4,7 @@
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="Description" lang="de" content="ADD SITE DESCRIPTION">
+   <meta name="Description" lang="de" content="Splendr. Stöbern Sie stundenlang im Internet, speichern und teilen Sie alle Objekte ihres Begehrens, jetzt ganz einfach mit wenigen Klicks.">
    <meta name="author" content="Reza Purnama Arief">
 <meta name="robots" content="index, follow">
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
@@ -25,7 +25,7 @@
 <body>
 
    <div class="container">
-      
+      <!-- <?php if(Session::get($user['username'],true)) ?> -->
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
 
